@@ -1,7 +1,12 @@
 'use strict';
 
 function BinarioADecimal(num) {
-
+   var array = num.split("");
+   var sum = 0;
+   for(var i=0; i<array.length; i++){
+      sum += array[i] * 2 ** (array.length-1-i); 
+   }
+   return sum;
 }
 
 function DecimalABinario(num) {
