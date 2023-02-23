@@ -5,15 +5,15 @@ function BinarioADecimal(num) {
 }
 
 function DecimalABinario(num) {
-   let bin =[];
+   let array =[];
 
    if (num === 0) return "0";
 
    while( num >= 1){
-      bin.unshift(num % 2);
+      array.unshift(num % 2);
       num = Math.trunc(num / 2);
    }
-   return bin.join("");
+   return array.join("");
 }
 
 module.exports = {
