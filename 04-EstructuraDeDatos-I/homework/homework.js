@@ -20,7 +20,13 @@ function nFactorial(n) {
   return n* nFactorial(n - 1)
 }
 
-function nFibonacci(n) {}
+function nFibonacci(n) {
+  if (n === 0) return 0
+  if (n === 1) return 1
+  else {
+    return nFibonacci(n -2) + nFibonacci(n - 1)
+  }
+}
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
