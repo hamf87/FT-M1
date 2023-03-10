@@ -77,10 +77,32 @@ function HashTable() {
   this.numBuckets = 35
 }
 
-HashTable.prototype.hash = function () { }
-HashTable.prototype.set = function () { }
-HashTable.prototype.get = function () { }
-HashTable.prototype.haskey = function () { }
+HashTable.prototype.hash = function (string) {
+  let suma = 0;
+  for (let i = 0; i < string.length; i++) {
+    suma += string.charCodeAt(i)
+  }
+  return suma % this.numBuckets
+}
+
+HashTable.prototype.set = function (key, value) {
+  if (typeof key !== 'string'){
+    throw new TypeError('Keys must be string')
+  }
+  let index = this.hash(key)
+  if(!this.buckets[index]) this.buckets[index] = {}
+  this.buckets[index] = value
+}
+
+HashTable.prototype.get = function (key) {
+  let index = this.hash(key)
+  return this.buckets[index][key]
+}
+HashTable.prototype.haskey = function (key) {
+  let index = this.hash(key)
+  if (this.buckets[index][key]) return true;
+  return false;
+}
 
 module.exports = {
   Node,
