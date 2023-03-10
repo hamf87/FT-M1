@@ -15,13 +15,50 @@ function LinkedList() {
 }
 
 function Node(value) {
-  this.value = value
-  this.next = null
+  this.value = value;
+  this.next = null;
 }
 
-linkendList.prototype.add = function () { }
-linkendList.prototype.remove = function () { }
-linkendList.prototype.search = function () { }
+linkendList.prototype.add = function (value) {
+  let newNode = new Node(value)
+  let current = this.head
+  if(!current){
+    this.head = newNode
+    return newNode
+  }
+  while (current.next) {
+    current = current.next
+  }
+  current.next = newNode
+  return newNode
+}
+linkendList.prototype.remove = function () {
+  let current = this.head
+  if (!current) return null;
+  if (!current.next) {
+    this.head = null
+    return current.value
+  }
+  while (current.next.next) {
+    current = current.next
+  }
+  let aux = current.next.value
+  current.next = null
+  return aux;
+}
+
+linkendList.prototype.search = function (value) {
+  let current = this.head
+  if(!current) return null
+  while (current){
+    if(typeof value === 'function'){
+      if(value(current.value)) return current.value
+    }
+    if (current.value === value) return value
+    current = current.next
+  } 
+  return null
+}
 
 /* EJERCICIO 2
 Implementar la clase HashTable.
